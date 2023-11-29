@@ -24,7 +24,7 @@
                                 <rect key="frame" x="0.0" y="20" width="320" height="56"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
-                                    <outlet property="delegate" destination="BYZ-38-t0r" id="XrB-Jb-S23"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="epn-7z-4jh"/>
                                 </connections>
                             </searchBar>
                         </subviews>
