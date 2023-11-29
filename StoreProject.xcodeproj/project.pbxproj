@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E6633C852B16D95C0037B436 /* SearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6633C842B16D95C0037B436 /* SearchResult.swift */; };
 		E6C0C9382B11432600609416 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6C0C9372B11432600609416 /* AppDelegate.swift */; };
 		E6C0C93A2B11432600609416 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6C0C9392B11432600609416 /* SceneDelegate.swift */; };
 		E6C0C93C2B11432600609416 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6C0C93B2B11432600609416 /* SearchViewController.swift */; };
@@ -16,6 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E6633C842B16D95C0037B436 /* SearchResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResult.swift; sourceTree = "<group>"; };
 		E6C0C9342B11432600609416 /* StoreProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StoreProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E6C0C9372B11432600609416 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E6C0C9392B11432600609416 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -63,6 +65,7 @@
 				E6C0C9402B11432800609416 /* Assets.xcassets */,
 				E6C0C9422B11432800609416 /* LaunchScreen.storyboard */,
 				E6C0C9452B11432800609416 /* Info.plist */,
+				E6633C842B16D95C0037B436 /* SearchResult.swift */,
 			);
 			path = StoreProject;
 			sourceTree = "<group>";
@@ -140,6 +143,7 @@
 			files = (
 				E6C0C93C2B11432600609416 /* SearchViewController.swift in Sources */,
 				E6C0C9382B11432600609416 /* AppDelegate.swift in Sources */,
+				E6633C852B16D95C0037B436 /* SearchResult.swift in Sources */,
 				E6C0C93A2B11432600609416 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

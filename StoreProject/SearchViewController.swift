@@ -11,7 +11,7 @@ class SearchViewController: UIViewController {
     
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
-    var searchResults = [String]()
+    var searchResults = [SearchResult]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,12 +26,13 @@ extension SearchViewController: UISearchBarDelegate {
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchResults = []
-        for i in 0...2 {
-            searchResults.append(
-                String(
-                    format: "Fake Result %d for '%@'", i, searchBar.text!
-                )
-            )
+        if searchBar.text! != "justin bieber" {
+            for i in 0...2 {
+                let searchResult = SearchResult()
+                searchResult.name = String(format: "Fake Result %d for", i)
+                searchResult.artistName = searchBar.text!
+                searchResults.append(searchResult)
+            }
         }
         searchBar.resignFirstResponder()
         tableView.reloadData()
@@ -58,7 +59,9 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
         if cell == nil {
             cell = UITableViewCell(style: .default, reuseIdentifier: cellIdentifier)
         }
-        cell?.textLabel!.text = searchResults[indexPath.row]
+        let searchResult = searchResults[indexPath.row]
+        cell?.textLabel?.text = searchResult.name
+        cell?.detailTextLabel?.text = searchResult.artistName
         return cell ?? UITableViewCell()
     }
 }
