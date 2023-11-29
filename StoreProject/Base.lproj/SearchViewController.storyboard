@@ -40,6 +40,10 @@
                             <constraint firstItem="isN-OZ-Ub3" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="xEp-LE-1SV"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="searchBar" destination="pIk-6t-2vU" id="YFE-7x-zFe"/>
+                        <outlet property="tableView" destination="isN-OZ-Ub3" id="egk-Fd-gLU"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
