@@ -33,6 +33,7 @@ extension SearchViewController: UISearchBarDelegate {
                 )
             )
         }
+        searchBar.resignFirstResponder()
         tableView.reloadData()
     }
 }
