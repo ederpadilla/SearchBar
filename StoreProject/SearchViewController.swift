@@ -47,7 +47,11 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView,
                    numberOfRowsInSection section: Int) -> Int {
-        searchResults.count
+        if searchResults.count == 0 {
+            return 1
+        } else {
+            return searchResults.count
+        }
     }
     
     func tableView(_ tableView: UITableView,
@@ -59,9 +63,14 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
         if cell == nil {
             cell = UITableViewCell(style: .default, reuseIdentifier: cellIdentifier)
         }
-        let searchResult = searchResults[indexPath.row]
-        cell?.textLabel?.text = searchResult.name
-        cell?.detailTextLabel?.text = searchResult.artistName
+        if searchResults.count == 0 {
+            cell?.textLabel?.text = "(Nothing found)"
+            cell?.detailTextLabel?.text = ""
+        } else {
+            let searchResult = searchResults[indexPath.row]
+            cell?.textLabel?.text = searchResult.name
+            cell?.detailTextLabel?.text = searchResult.artistName
+        }
         return cell ?? UITableViewCell()
     }
 }
