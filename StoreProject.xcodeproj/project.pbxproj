@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E662F7552B200EA50065DA18 /* SearchResultCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E662F7542B200EA50065DA18 /* SearchResultCellTableViewCell.swift */; };
 		E6633C852B16D95C0037B436 /* SearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6633C842B16D95C0037B436 /* SearchResult.swift */; };
 		E6C0C9382B11432600609416 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6C0C9372B11432600609416 /* AppDelegate.swift */; };
 		E6C0C93A2B11432600609416 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6C0C9392B11432600609416 /* SceneDelegate.swift */; };
@@ -18,6 +19,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E662F7542B200EA50065DA18 /* SearchResultCellTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultCellTableViewCell.swift; sourceTree = "<group>"; };
 		E6633C842B16D95C0037B436 /* SearchResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResult.swift; sourceTree = "<group>"; };
 		E6C0C9342B11432600609416 /* StoreProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StoreProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E6C0C9372B11432600609416 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -69,6 +71,7 @@
 				E6C0C9452B11432800609416 /* Info.plist */,
 				E6633C842B16D95C0037B436 /* SearchResult.swift */,
 				E6D95AD62B1E7A2800EB82E8 /* SearchResultCell.xib */,
+				E662F7542B200EA50065DA18 /* SearchResultCellTableViewCell.swift */,
 			);
 			path = StoreProject;
 			sourceTree = "<group>";
@@ -146,6 +149,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E6C0C93C2B11432600609416 /* SearchViewController.swift in Sources */,
+				E662F7552B200EA50065DA18 /* SearchResultCellTableViewCell.swift in Sources */,
 				E6C0C9382B11432600609416 /* AppDelegate.swift in Sources */,
 				E6633C852B16D95C0037B436 /* SearchResult.swift in Sources */,
 				E6C0C93A2B11432600609416 /* SceneDelegate.swift in Sources */,
