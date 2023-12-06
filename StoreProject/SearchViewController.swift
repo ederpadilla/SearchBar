@@ -16,8 +16,12 @@ class SearchViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let cellNib = UINib(nibName: "SearchResultCell", bundle: nil)
-        tableView.register(cellNib, forCellReuseIdentifier: "SearchResultCell")
+        var cellNib = UINib(nibName: "SearchResultCell", bundle: nil)
+        tableView.register(cellNib, forCellReuseIdentifier: Constants.searchResultCell.rawValue)
+        cellNib = UINib(nibName: Constants.nothingFoundCell.rawValue, bundle: nil)
+        tableView.register(
+            cellNib,
+            forCellReuseIdentifier: Constants.nothingFoundCell.rawValue)
         tableView.contentInset = UIEdgeInsets(top: 51, left: 0, bottom: 0, right: 0)
     }
     
@@ -28,7 +32,7 @@ extension SearchViewController: UISearchBarDelegate {
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchResults = []
-        if searchBar.text! != "justin bieber" {
+        if searchBar.text! != "Justin bieber" {
             for i in 0...2 {
                 let searchResult = SearchResult()
                 searchResult.name = String(format: "Fake Result %d for", i)
@@ -61,19 +65,20 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView,
                    cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cellIdentifier = "SearchResultCell"
-        let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier,
-                                                 for: indexPath) as! SearchResultCellTableViewCell
         if searchResults.count == 0 {
-            cell.nameLabel.text = "(Nothing found)"
-            cell.artistNameLabel.text = ""
+            return tableView.dequeueReusableCell(withIdentifier: Constants.nothingFoundCell.rawValue,
+                                                 for: indexPath)
         } else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: Constants.searchResultCell.rawValue,
+                                                     for: indexPath) as! SearchResultCellTableViewCell
+            
             let searchResult = searchResults[indexPath.row]
             cell.nameLabel.text = searchResult.name
             cell.artistNameLabel.text = searchResult.artistName
+            return cell
         }
-        return cell
     }
+    
     
     func tableView(_ tableView: UITableView,
                    didSelectRowAt indexPath: IndexPath) {
@@ -88,4 +93,9 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
             return indexPath
         }
     }
+}
+
+enum Constants: String {
+    case searchResultCell = "SearchResultCell"
+    case nothingFoundCell = "NothingFoundCell"
 }
