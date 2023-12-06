@@ -23,6 +23,7 @@ class SearchViewController: UIViewController {
             cellNib,
             forCellReuseIdentifier: Constants.nothingFoundCell.rawValue)
         tableView.contentInset = UIEdgeInsets(top: 51, left: 0, bottom: 0, right: 0)
+        searchBar.becomeFirstResponder()
     }
     
     
