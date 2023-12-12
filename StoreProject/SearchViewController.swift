@@ -11,6 +11,7 @@ class SearchViewController: UIViewController {
     
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
+    
     var searchResults = [SearchResult]()
     var hasSearched = false
     
@@ -27,24 +28,40 @@ class SearchViewController: UIViewController {
         searchBar.becomeFirstResponder()
     }
     
+    func performStoreRequest(with url: URL) -> String? {
+        do {
+            return try String(contentsOf: url, encoding: .utf8)
+        } catch {
+            print("Download Error: \(error.localizedDescription)")
+            return nil
+        }
+    }
     
+    func iTunesURL(searchText: String) -> URL {
+        let encodedText = searchText.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)!
+        let urlString = String(format: "https://itunes.apple.com/search?term=%@", encodedText)
+        let url = URL(string: urlString)
+        return url!
+    }
 }
 
 extension SearchViewController: UISearchBarDelegate {
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        searchResults = []
-        if searchBar.text! != "Justin bieber" {
-            for i in 0...2 {
-                let searchResult = SearchResult()
-                searchResult.name = String(format: "Fake Result %d for", i)
-                searchResult.artistName = searchBar.text!
-                searchResults.append(searchResult)
+        if !searchBar.text!.isEmpty {
+            searchBar.resignFirstResponder()
+            
+            hasSearched = true
+            searchResults = []
+            
+            let url = iTunesURL(searchText: searchBar.text!)
+            print("URL: '\(url)'")
+            if let jsonString = performStoreRequest(with: url) {
+              print("Received JSON string '\(jsonString)'")
             }
+            
+            tableView.reloadData()
         }
-        searchBar.resignFirstResponder()
-        hasSearched = true
-        tableView.reloadData()
     }
     
     func position(for bar: UIBarPositioning) -> UIBarPosition {
@@ -61,7 +78,7 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
         } else if searchResults.count == 0 {
             return 1
         } else {
-            return searchResults.count + 1
+            return searchResults.count
         }
     }
     
