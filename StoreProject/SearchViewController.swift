@@ -16,6 +16,7 @@ class SearchViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.rowHeight = 80
         var cellNib = UINib(nibName: "SearchResultCell", bundle: nil)
         tableView.register(cellNib, forCellReuseIdentifier: Constants.searchResultCell.rawValue)
         cellNib = UINib(nibName: Constants.nothingFoundCell.rawValue, bundle: nil)
@@ -60,7 +61,7 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
         } else if searchResults.count == 0 {
             return 1
         } else {
-            return searchResults.count
+            return searchResults.count + 1
         }
     }
     
