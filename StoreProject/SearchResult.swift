@@ -20,20 +20,52 @@ class SearchResult: Codable, CustomStringConvertible {
     var currency: String? = ""
     var imageSmall: String? = ""
     var imageLarge: String? = ""
-    var storeURL: String?? = ""
-    var genre: String? = ""
+    var trackViewUrl: String? = ""
+    var collectionName: String? = ""
+    var collectionViewUrl: String? = ""
+    var collectionPrice: Double? = 0.0
+    var itemPrice: Double? = 0.0
+    var itemGenre: String? = ""
+    var bookGenre: [String]? = []
 
     enum CodingKeys: String, CodingKey {
-      case imageSmall = "artworkUrl60"
-      case imageLarge = "artworkUrl100"
-      case storeURL = "trackViewUrl"
-      case genre = "primaryGenreName"
-      case kind, artistName, trackName
-      case trackPrice, currency
+        case imageSmall = "artworkUrl60"
+        case imageLarge = "artworkUrl100"
+        case itemGenre = "primaryGenreName"
+        case bookGenre = "genres"
+        case itemPrice = "price"
+        case kind, artistName, currency
+        case trackName, trackPrice, trackViewUrl
+        case collectionName, collectionViewUrl, collectionPrice
     }
     
     var name: String {
-        return trackName ?? ""
+        trackName ?? collectionName ?? ""
+    }
+    
+    var storeURL: String {
+        trackViewUrl ?? collectionViewUrl ?? ""
+    }
+    
+    var price: Double {
+        trackPrice ?? collectionPrice ?? itemPrice ?? 0.0
+    }
+    
+    var genre: String {
+        if let genre = itemGenre {
+            return genre
+        } else if let genres = bookGenre {
+            return genres.joined(separator: ", ")
+        }
+        return ""
+    }
+    
+    var type: String {
+        kind ?? "audiobook"
+    }
+    
+    var artist: String {
+        artistName ?? ""
     }
     
     var description: String {
