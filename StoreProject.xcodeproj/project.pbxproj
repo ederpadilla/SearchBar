@@ -11,6 +11,7 @@
 		E662F7582B2012B90065DA18 /* NothingFoundCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E662F7562B2012B80065DA18 /* NothingFoundCell.swift */; };
 		E662F7592B2012B90065DA18 /* NothingFoundCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E662F7572B2012B80065DA18 /* NothingFoundCell.xib */; };
 		E6633C852B16D95C0037B436 /* SearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6633C842B16D95C0037B436 /* SearchResult.swift */; };
+		E6AD68102B294F6D00CD2572 /* LoadingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E6AD680F2B294F6D00CD2572 /* LoadingCell.xib */; };
 		E6C0C9382B11432600609416 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6C0C9372B11432600609416 /* AppDelegate.swift */; };
 		E6C0C93A2B11432600609416 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6C0C9392B11432600609416 /* SceneDelegate.swift */; };
 		E6C0C93C2B11432600609416 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6C0C93B2B11432600609416 /* SearchViewController.swift */; };
@@ -25,6 +26,7 @@
 		E662F7562B2012B80065DA18 /* NothingFoundCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NothingFoundCell.swift; sourceTree = "<group>"; };
 		E662F7572B2012B80065DA18 /* NothingFoundCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NothingFoundCell.xib; sourceTree = "<group>"; };
 		E6633C842B16D95C0037B436 /* SearchResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResult.swift; sourceTree = "<group>"; };
+		E6AD680F2B294F6D00CD2572 /* LoadingCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LoadingCell.xib; path = "../../../Downloads/ia-materials-editions-10.0/04-store-search/source-code/35-asynchronous-networking/chapter-35-final/StoreSearch/LoadingCell.xib"; sourceTree = "<group>"; };
 		E6C0C9342B11432600609416 /* StoreProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StoreProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E6C0C9372B11432600609416 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E6C0C9392B11432600609416 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -78,6 +80,7 @@
 				E662F7542B200EA50065DA18 /* SearchResultCellTableViewCell.swift */,
 				E662F7562B2012B80065DA18 /* NothingFoundCell.swift */,
 				E662F7572B2012B80065DA18 /* NothingFoundCell.xib */,
+				E6AD680F2B294F6D00CD2572 /* LoadingCell.xib */,
 			);
 			path = StoreProject;
 			sourceTree = "<group>";
@@ -142,6 +145,7 @@
 			files = (
 				E6C0C9442B11432800609416 /* LaunchScreen.storyboard in Resources */,
 				E6C0C9412B11432800609416 /* Assets.xcassets in Resources */,
+				E6AD68102B294F6D00CD2572 /* LoadingCell.xib in Resources */,
 				E6D95AD72B1E7A2800EB82E8 /* SearchResultCell.xib in Resources */,
 				E662F7592B2012B90065DA18 /* NothingFoundCell.xib in Resources */,
 				E6C0C93F2B11432600609416 /* SearchViewController.storyboard in Resources */,

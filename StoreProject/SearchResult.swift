@@ -86,7 +86,7 @@ class SearchResult: Codable, CustomStringConvertible {
         "\nResult - Kind: \(kind ?? "None"), Name: \(name), Artist Name: \(artistName ?? "None")"
     }
     
-    func < (lhs: SearchResult, rhs: SearchResult) -> Bool {
+    static func < (lhs: SearchResult, rhs: SearchResult) -> Bool {
         lhs.name.localizedStandardCompare(rhs.name) == .orderedAscending
     }
 }
