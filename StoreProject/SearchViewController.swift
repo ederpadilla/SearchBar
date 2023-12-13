@@ -28,12 +28,24 @@ class SearchViewController: UIViewController {
         searchBar.becomeFirstResponder()
     }
     
-    func performStoreRequest(with url: URL) -> String? {
+    func performStoreRequest(with url: URL) -> Data? {
         do {
-            return try String(contentsOf: url, encoding: .utf8)
+            return try Data(contentsOf:url)
         } catch {
             print("Download Error: \(error.localizedDescription)")
+            showNetworkError()
             return nil
+        }
+    }
+    
+    func parse(data: Data) -> [SearchResult] {
+        do {
+            let decoder = JSONDecoder()
+            let result = try decoder.decode(ResultArray.self, from: data)
+            return result.results
+        } catch {
+            print("JSON Error: \(error)")
+            return []
         }
     }
     
@@ -42,6 +54,18 @@ class SearchViewController: UIViewController {
         let urlString = String(format: "https://itunes.apple.com/search?term=%@", encodedText)
         let url = URL(string: urlString)
         return url!
+    }
+    
+    func showNetworkError() {
+        let alert = UIAlertController(title: "Whoops...",
+                                      message: "There was an error accessing the iTunes Store." +
+                                      " Please try again.",
+                                      preferredStyle: .alert)
+        
+        let action = UIAlertAction(
+            title: "OK", style: .default, handler: nil)
+        alert.addAction(action)
+        present(alert, animated: true, completion: nil)
     }
 }
 
@@ -56,10 +80,10 @@ extension SearchViewController: UISearchBarDelegate {
             
             let url = iTunesURL(searchText: searchBar.text!)
             print("URL: '\(url)'")
-            if let jsonString = performStoreRequest(with: url) {
-              print("Received JSON string '\(jsonString)'")
+            if let data = performStoreRequest(with: url) {
+                let results = parse(data: data)
+                print("Got results: \(results)")
             }
-            
             tableView.reloadData()
         }
     }
