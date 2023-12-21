@@ -16,6 +16,8 @@ class SearchViewController: UIViewController {
     var hasSearched = false
     var isLoading = false
     
+    var dataTask: URLSessionDataTask?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.rowHeight = 80
@@ -66,6 +68,7 @@ extension SearchViewController: UISearchBarDelegate {
         if !searchBar.text!.isEmpty {
             searchBar.resignFirstResponder()
             
+            dataTask?.cancel()
             isLoading = true
             tableView.reloadData()
             
@@ -74,7 +77,7 @@ extension SearchViewController: UISearchBarDelegate {
             
             let url = iTunesURL(searchText: searchBar.text!)
             let session = URLSession.shared
-            let dataTask = session.dataTask(with: url) {data, response, error in
+            dataTask = session.dataTask(with: url) {data, response, error in
                 if let error = error {
                     print("Failure! \(error.localizedDescription)")
                 } else if let httpResponse = response as? HTTPURLResponse,
@@ -99,7 +102,7 @@ extension SearchViewController: UISearchBarDelegate {
                     }
                 }
             }
-            dataTask.resume()
+            dataTask?.resume()
         }
     }
     
