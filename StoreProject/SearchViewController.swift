@@ -10,6 +10,7 @@ import UIKit
 class SearchViewController: UIViewController {
     
     @IBOutlet weak var searchBar: UISearchBar!
+    @IBOutlet weak var segmentedControl: UISegmentedControl!
     @IBOutlet weak var tableView: UITableView!
     
     var searchResults = [SearchResult]()
@@ -27,8 +28,12 @@ class SearchViewController: UIViewController {
         tableView.register(cellNib, forCellReuseIdentifier: Constants.nothingFoundCell.rawValue)
         cellNib = UINib(nibName: Constants.loadingCell.rawValue,bundle: nil)
         tableView.register(cellNib, forCellReuseIdentifier: Constants.loadingCell.rawValue)
-        tableView.contentInset = UIEdgeInsets(top: 51, left: 0, bottom: 0, right: 0)
+        tableView.contentInset = UIEdgeInsets(top: 91, left: 0, bottom: 0, right: 0)
         searchBar.becomeFirstResponder()
+    }
+    
+    @IBAction func segmentChanged(_ sender: UISegmentedControl) {
+        performSearch()
     }
     
     func parse(data: Data) -> [SearchResult] {
@@ -65,6 +70,10 @@ class SearchViewController: UIViewController {
 extension SearchViewController: UISearchBarDelegate {
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        performSearch()
+    }
+    
+    func performSearch() {
         if !searchBar.text!.isEmpty {
             searchBar.resignFirstResponder()
             

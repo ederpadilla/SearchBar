@@ -39,12 +39,17 @@
                                 <items>
                                     <barButtonItem style="plain" id="J7J-VZ-lnV">
                                         <segmentedControl key="customView" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="kVs-5U-8Vh">
-                                            <rect key="frame" x="16" y="6" width="288" height="32"/>
+                                            <rect key="frame" x="16" y="5.5" width="288" height="33"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <segments>
                                                 <segment title="First"/>
-                                                <segment title="Second"/>
+                                                <segment title="Music"/>
+                                                <segment title="Software"/>
+                                                <segment title="E-books"/>
                                             </segments>
+                                            <connections>
+                                                <action selector="segmentChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="Ufu-un-tgk"/>
+                                            </connections>
                                         </segmentedControl>
                                     </barButtonItem>
                                 </items>
@@ -67,6 +72,7 @@
                     </view>
                     <connections>
                         <outlet property="searchBar" destination="pIk-6t-2vU" id="YFE-7x-zFe"/>
+                        <outlet property="segmentedControl" destination="kVs-5U-8Vh" id="s8N-Bp-fJB"/>
                         <outlet property="tableView" destination="isN-OZ-Ub3" id="egk-Fd-gLU"/>
                     </connections>
                 </viewController>
