@@ -20,6 +20,11 @@ class DetailViewController: UIViewController {
     
     var downloadTask: URLSessionDownloadTask?
     
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        transitioningDelegate = self
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         popupView.layer.cornerRadius = 10
@@ -28,7 +33,14 @@ class DetailViewController: UIViewController {
         gestureRecognizer.cancelsTouchesInView = false
         gestureRecognizer.delegate = self
         view.addGestureRecognizer(gestureRecognizer)
-        if searchResult != nil { updateUI() }
+        if searchResult != nil {
+            updateUI()
+        }
+        // Gradient view
+        view.backgroundColor = UIColor.clear
+        let dimmingView = GradientView(frame: CGRect.zero)
+        dimmingView.frame = view.bounds
+        view.insertSubview(dimmingView, at: 0)
     }
     
     deinit {
@@ -46,7 +58,6 @@ class DetailViewController: UIViewController {
         }
     }
     
-    // MARK: - Helper Methods
     func updateUI() {
         nameLabel.text = searchResult.name
         
@@ -67,7 +78,8 @@ class DetailViewController: UIViewController {
         let priceText: String
         if searchResult.price == 0 {
             priceText = "Free"
-        } else if let text = formatter.string(from: searchResult.price as NSNumber) {
+        } else if let text = formatter.string(
+            from: searchResult.price as NSNumber) {
             priceText = text
         } else {
             priceText = ""
@@ -86,5 +98,17 @@ extension DetailViewController: UIGestureRecognizerDelegate {
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer,
                            shouldReceive touch: UITouch) -> Bool {
         return (touch.view === self.view)
+    }
+}
+
+extension DetailViewController: UIViewControllerTransitioningDelegate {
+    func animationController(forPresented presented: UIViewController,
+                             presenting: UIViewController,
+                             source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        return BounceAnimationController()
+    }
+    
+    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        return SlideOutAnimationController()
     }
 }
