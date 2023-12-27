@@ -19,6 +19,7 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var priceButton: UIButton!
     
     var downloadTask: URLSessionDownloadTask?
+    var dismissStyle = AnimationStyle.fade
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -49,6 +50,7 @@ class DetailViewController: UIViewController {
     }
     
     @IBAction func close() {
+        dismissStyle = .slide 
         dismiss(animated: true, completion: nil)
     }
     
@@ -92,6 +94,11 @@ class DetailViewController: UIViewController {
             downloadTask = artworkImageView.loadImage(url: largeURL)
         }
     }
+    
+    enum AnimationStyle {
+        case slide
+        case fade
+    }
 }
 
 extension DetailViewController: UIGestureRecognizerDelegate {
@@ -109,6 +116,11 @@ extension DetailViewController: UIViewControllerTransitioningDelegate {
     }
     
     func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        return SlideOutAnimationController()
+        switch dismissStyle {
+        case .slide:
+            return SlideOutAnimationController()
+        case .fade:
+            return FadeOutAnimationController()
+        }
     }
 }
